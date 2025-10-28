@@ -8,13 +8,13 @@ public class NumberGuessingGame {
     
     private Scanner sc;
     private Random random;
-    private int totalScore;
+    private int totScore;
     private int roundsPlayed;
     
     public NumberGuessingGame() {
         this.sc=new Scanner(System.in);
         this.random=new Random();
-        this.totalScore=0;
+        this.totScore=0;
         this.roundsPlayed=0;
     }
     
@@ -27,7 +27,7 @@ public class NumberGuessingGame {
         System.out.println(" Welcome to the NUMBER GUESSING GAME! ");
         System.out.println("=========================================");
         System.out.println("I'm thinking of a number between "+MIN_NUMBER+" and "+MAX_NUMBER);
-        System.out.println("You have " +MAX_ATTEMPTS+ " attempts to guess it!");
+        System.out.println("You have "+MAX_ATTEMPTS+" attempts to guess it!");
         System.out.println("Good luck! \n");
         
         boolean playAgain=true;
@@ -35,10 +35,10 @@ public class NumberGuessingGame {
         while(playAgain) {
             playRound();
             roundsPlayed++;
-            System.out.println("\n Current Statistics:");
+            System.out.println("\nCurrent Statistics:");
             System.out.println("Rounds Played: "+roundsPlayed);
-            System.out.println("Total Score: "+totalScore);
-            System.out.println("Average Score: "+(roundsPlayed > 0 ? totalScore / roundsPlayed : 0));
+            System.out.println("Total Score: "+totScore);
+            System.out.println("Average Score: "+(roundsPlayed > 0 ? totScore / roundsPlayed : 0));
             
             System.out.print("\nWould you like to play another round? (yes/no): ");
             String response=sc.nextLine().toLowerCase().trim();
@@ -48,7 +48,7 @@ public class NumberGuessingGame {
                 System.out.println("\n" + "=".repeat(50));
                 System.out.println(" NEW ROUND STARTING! ");
                 System.out.println("I'm thinking of a new number between "+MIN_NUMBER+ " and "+MAX_NUMBER);
-                System.out.println("You have " +MAX_ATTEMPTS+ " attempts to guess it!\n");
+                System.out.println("You have "+MAX_ATTEMPTS+" attempts to guess it!\n");
             }
         }
         
@@ -60,7 +60,7 @@ public class NumberGuessingGame {
         int attempts=0;
         boolean guessed=false;
         
-        System.out.println("🎲 Round "+(roundsPlayed+1)+"-Let's begin!");
+        System.out.println("Round "+(roundsPlayed+1)+"-Let's begin!");
         
         while(attempts < MAX_ATTEMPTS && !guessed) {
             attempts++;
@@ -80,14 +80,14 @@ public class NumberGuessingGame {
                 if(userGuess == targetNumber) {
                     guessed=true;
                     int roundScore=calculateScore(attempts);
-                    totalScore+=roundScore;
+                    totScore+=roundScore;
                     
                     System.out.println(" Congratulations! You guessed it right!");
                     System.out.println(" The number was: "+targetNumber);
                     System.out.println(" You used " +attempts+ " attempt(s)");
                     System.out.println(" Round Score: " +roundScore+ " points");
                     
-                } else if (userGuess < targetNumber) {
+                } else if(userGuess < targetNumber) {
                     System.out.println(" Too low! The number is higher than "+userGuess);
                     if(remainingAttempts > 0) {
                         System.out.println(" You have " +remainingAttempts+ " attempt(s) remaining");
@@ -108,7 +108,7 @@ public class NumberGuessingGame {
         }
         
         if(!guessed) {
-            System.out.println(" Game Over! You've used all " + MAX_ATTEMPTS + " attempts.");
+            System.out.println(" Game Over! You've used all "+MAX_ATTEMPTS+" attempts.");
             System.out.println(" The correct number was: "+targetNumber);
             System.out.println(" Round Score: 0 points");
         }
@@ -131,11 +131,11 @@ public class NumberGuessingGame {
         System.out.println(" FINAL RESULTS ");
         System.out.println("=".repeat(50));
         System.out.println("Total Rounds Played: "+roundsPlayed);
-        System.out.println("Total Score: "+totalScore);
+        System.out.println("Total Score: "+totScore);
         
         if(roundsPlayed > 0) {
-            System.out.println("Average Score per Round: "+(totalScore/roundsPlayed));
-            int averageScore=totalScore/roundsPlayed;
+            System.out.println("Average Score per Round: "+(totScore/roundsPlayed));
+            int averageScore=totScore/roundsPlayed;
             String rating;
             if (averageScore >= 80) {
                 rating=" EXCELLENT! ";
