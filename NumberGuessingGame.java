@@ -84,18 +84,18 @@ public class NumberGuessingGame {
                     
                     System.out.println(" Congratulations! You guessed it right!");
                     System.out.println(" The number was: "+targetNumber);
-                    System.out.println(" You used " +attempts+ " attempt(s)");
-                    System.out.println(" Round Score: " +roundScore+ " points");
+                    System.out.println(" You used "+attempts+" attempt(s)");
+                    System.out.println(" Round Score: "+roundScore+" points");
                     
                 } else if(userGuess < targetNumber) {
                     System.out.println(" Too low! The number is higher than "+userGuess);
                     if(remainingAttempts > 0) {
-                        System.out.println(" You have " +remainingAttempts+ " attempt(s) remaining");
+                        System.out.println(" You have "+remainingAttempts+" attempt(s) remaining");
                     }
                 } else {
                     System.out.println(" Too high! The number is lower than " +userGuess);
                     if(remainingAttempts > 0) {
-                        System.out.println(" You have " +remainingAttempts+ " attempt(s) remaining");
+                        System.out.println(" You have "+remainingAttempts+" attempt(s) remaining");
                     }
                 }
                 
@@ -118,7 +118,7 @@ public class NumberGuessingGame {
     }
     
     private int calculateScore(int attempts) {
-        if (attempts <= 0) 
+        if(attempts <= 0) 
         return 0;
         int baseScore=POINTS_PER_ROUND;
         int penalty=(attempts - 1)*10;
@@ -137,7 +137,7 @@ public class NumberGuessingGame {
             System.out.println("Average Score per Round: "+(totScore/roundsPlayed));
             int averageScore=totScore/roundsPlayed;
             String rating;
-            if (averageScore >= 80) {
+            if(averageScore >= 80) {
                 rating=" EXCELLENT! ";
             } else if(averageScore >= 60) {
                 rating=" GREAT! ";
@@ -146,13 +146,13 @@ public class NumberGuessingGame {
             } else if(averageScore >= 20) {
                 rating=" OKAY! ";
             } else {
-                rating=" KEEP PRACTICING! ";
+                rating="KEEP PRACTICING!";
             }
             
             System.out.println("Performance Rating: "+rating);
         }
         
-        System.out.println("\nThank you for playing the Number Guessing Game! ");
+        System.out.println("\nThank you for playing the Number Guessing Game!");
         System.out.println("Come back soon for more fun! ");
     }
 }
